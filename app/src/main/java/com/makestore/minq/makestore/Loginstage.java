@@ -28,6 +28,10 @@ public class Loginstage extends AppCompatActivity {
                 setResult(RESULT_OK,i);
                 finish();
                 break;
+            case R.id.customingin:
+                Intent i2 = new Intent(this,Customaersignin.class);
+                startActivity(i2);
+                break;
         }
     }
 }

@@ -50,6 +50,8 @@
             android:layout_height="wrap_content"
             android:text="pwd 찾기"/>
         <Button
+            android:id="@+id/customingin"
+            android:onClick="mk"
             android:layout_width="0sp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
