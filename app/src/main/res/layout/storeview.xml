@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <WebView
+        android:id="@+id/storeitems"
+        android:onClick="mk"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></WebView>
+
+    <!--모두 이용 가능-->
+    <Button
+        android:id="@+id/logins"
+        android:visibility="gone"
+        android:onClick="mk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/itemplus"
+        android:layout_alignLeft="@+id/itemplus"
+        android:text="login"/>
+
+    <!--가게 주인만 이용 가능
+        android:visibility="gone"-->
+    <Button
+        android:id="@+id/itemplus"
+        android:visibility="gone"
+        android:onClick="mk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/threeball"
+        android:layout_alignLeft="@+id/threeball"
+        android:text="+"/>
+    <Button
+        android:layout_width="75sp"
+        android:layout_height="75sp"
+        android:id="@+id/threeball"
+        android:onClick="mk"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:minWidth="0dp"
+        android:minHeight="0dp"
+        android:background="@drawable/threeball"
+        />
+</RelativeLayout>
