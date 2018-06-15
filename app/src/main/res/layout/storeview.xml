@@ -4,9 +4,9 @@
     android:layout_height="match_parent">
     <WebView
         android:id="@+id/storeitems"
-        android:onClick="mk"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></WebView>
+        android:layout_height="match_parent">
+    </WebView>
 
     <!--모두 이용 가능-->
     <Button

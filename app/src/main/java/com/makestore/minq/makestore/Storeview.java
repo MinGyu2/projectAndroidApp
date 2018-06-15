@@ -65,7 +65,7 @@ public class Storeview extends AppCompatActivity {
             public boolean onTouch(View v, MotionEvent event) {
                 switch (event.getAction()){
                     case MotionEvent.ACTION_DOWN:
-                        Toast.makeText(Storeview.this, "wwws", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(Storeview.this, "wwws", Toast.LENGTH_SHORT).show();
                         itemplus.setVisibility(View.GONE);
                         logins.setVisibility(View.GONE);
                     break;
