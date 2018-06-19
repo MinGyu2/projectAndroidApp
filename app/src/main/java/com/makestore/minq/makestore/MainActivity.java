@@ -121,7 +121,9 @@ public class MainActivity extends AppCompatActivity {
             String text = (String)strings[2];*/
 
 
-            String serverURL = "http://13.125.255.233:8888/view.php";
+            //String serverURL = "http://13.125.255.233:8888/view.php";
+            String serverURL = "http://13.125.255.233:8887/clients/storenames.php";
+
             StringBuffer buffer = new StringBuffer();
             /*
             try {

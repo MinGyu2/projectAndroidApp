@@ -131,7 +131,8 @@ public class Saveitem extends AppCompatActivity {
             String text = (String)strings[2];
 
 
-            String serverURL = "http://13.125.255.233:8888/clients/test2.php";
+            //String serverURL = "http://13.125.255.233:8888/clients/test2.php";
+            String serverURL = "http://13.125.255.233:8887/clients/saveitem.php";
             StringBuffer buffer = new StringBuffer();
             try {
                 buffer.append("img").append("=").append(URLEncoder.encode(img,"UTF-8")).append("&");
@@ -139,6 +140,7 @@ public class Saveitem extends AppCompatActivity {
                 e.printStackTrace();
             }
             buffer.append("name").append("=").append(storename).append("&");
+            //buffer.append("name").append("=").append("root").append("&");
             buffer.append("imgname").append("=").append(name).append("&");
             buffer.append("text").append("=").append(text);
 

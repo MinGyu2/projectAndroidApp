@@ -74,7 +74,8 @@ public class Storeview extends AppCompatActivity {
             }
         });
         //webss.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
-        web.loadUrl("http://13.125.255.233:8888/clients/storelist.php?store="+sname);
+        //web.loadUrl("http://13.125.255.233:8888/clients/storelist.php?store="+sname);
+        web.loadUrl("http://13.125.255.233:8887/clients/storelist.php?store="+sname);
         web.reload();
 
         itemplus = (Button)findViewById(R.id.itemplus);
@@ -148,7 +149,9 @@ public class Storeview extends AppCompatActivity {
             } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();
             }
-            web.postUrl("http://13.125.255.233:8888/clients/storelist.php?store="+sname, str.getBytes());
+            //web.postUrl("http://13.125.255.233:8888/clients/storelist.php?store="+sname, str.getBytes());
+            web.postUrl("http://13.125.255.233:8887/clients/storelist.php?store="+sname, str.getBytes());
+
             itemplus.setVisibility(View.GONE);
             logins.setVisibility(View.GONE);
 

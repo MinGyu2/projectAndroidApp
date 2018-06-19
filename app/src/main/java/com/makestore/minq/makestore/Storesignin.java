@@ -22,7 +22,8 @@ public class Storesignin extends AppCompatActivity {
         mWebset = mWebs.getSettings();
         mWebset.setJavaScriptEnabled(true);
 
-        mWebs.loadUrl("http://13.125.255.233:8888/clients/addStore.html");
+        //mWebs.loadUrl("http://13.125.255.233:8888/clients/addStore.html");
+        mWebs.loadUrl("http://13.125.255.233:8887/clients/addStore.html");
 
         /*//start -> php post 형식으로 만듬 이것으로 로그인하여 들어가는것을 구현 하면 됨
         String str = null;
