@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
                 i2.putExtra("storename",ss.getSelectedItem().toString());
                 //i2.putExtra("logss","0");
                 startActivity(i2);
-                Toast.makeText(this,""+ss.getSelectedItem().toString(),Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this,""+ss.getSelectedItem().toString(),Toast.LENGTH_SHORT).show();
                 break;
             case R.id.refreshs:
                 ArrayList<String> entries =  new ArrayList<String>();//Arrays.asList("List Item A", "List Item B"));

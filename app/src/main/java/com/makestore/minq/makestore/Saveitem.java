@@ -10,6 +10,7 @@ import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Base64;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -52,6 +53,16 @@ public class Saveitem extends AppCompatActivity {
         nameet = (EditText)findViewById(R.id.nameet);
         textet = (EditText)findViewById(R.id.textet);
 
+    }
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if((keyCode == KeyEvent.KEYCODE_BACK)){
+            Intent i = getIntent();
+            setResult(RESULT_OK, i);
+            finish();
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
     }
     public void mks(View v){
         switch (v.getId()){

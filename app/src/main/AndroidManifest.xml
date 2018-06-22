@@ -21,6 +21,7 @@
         <activity android:name=".Saveitem" android:screenOrientation="portrait"/>
         <activity android:name=".Loginstage" android:screenOrientation="portrait"/>
         <activity android:name=".Customaersignin" android:screenOrientation="portrait"/>
+        <activity android:name=".MapsView" android:screenOrientation="portrait"/>
     </application>
     <uses-permission android:name="android.permission.INTERNET"/>
 </manifest>
