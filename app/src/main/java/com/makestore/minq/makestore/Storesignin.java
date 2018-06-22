@@ -2,7 +2,16 @@ package com.makestore.minq.makestore;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.webkit.JavascriptInterface;
@@ -13,16 +22,19 @@ import android.widget.Toast;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Storesignin extends AppCompatActivity {
     private WebView mWebs;
     private WebSettings mWebset;
-
     String addrs= "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.storesignin);
+
 
         mWebs =(WebView)findViewById(R.id.webs);
         mWebs.setWebViewClient(new WebViewClient());
@@ -30,18 +42,7 @@ public class Storesignin extends AppCompatActivity {
         mWebset.setJavaScriptEnabled(true);
         mWebs.addJavascriptInterface(new WebAppInterface(this),"Android");
 
-        //mWebs.loadUrl("http://13.125.255.233:8888/clients/addStore.html");
         mWebs.loadUrl("http://13.125.255.233:8887/clients/addStore.html");
-
-        /*//start -> php post 형식으로 만듬 이것으로 로그인하여 들어가는것을 구현 하면 됨
-        String str = null;
-        try {
-            str = "q=" + URLEncoder.encode("12", "UTF-8");
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
-        mWebs.postUrl("http://13.125.255.233:8888/clients/test2.php?aa=asdasdasd", str.getBytes());
-        //end*/
 
         mWebs.reload();
     }
@@ -78,6 +79,8 @@ public class Storesignin extends AppCompatActivity {
             return addrs;
         }
     }
+
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
