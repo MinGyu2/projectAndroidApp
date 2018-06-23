@@ -15,9 +15,28 @@
         android:onClick="mk"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/sMaps"
+        android:layout_alignLeft="@+id/sMaps"
+        android:text="login"/>
+    <Button
+        android:id="@+id/logouts"
+        android:visibility="gone"
+        android:onClick="mk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/sMaps"
+        android:layout_alignLeft="@+id/sMaps"
+        android:text="logout"/>
+
+    <Button
+        android:id="@+id/sMaps"
+        android:visibility="gone"
+        android:onClick="mk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_above="@+id/itemplus"
         android:layout_alignLeft="@+id/itemplus"
-        android:text="login"/>
+        android:text="가게위치"/>
 
     <!--가게 주인만 이용 가능
         android:visibility="gone"-->

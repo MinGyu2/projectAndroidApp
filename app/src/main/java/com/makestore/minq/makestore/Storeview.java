@@ -37,15 +37,18 @@ import java.net.URLEncoder;
 
 public class Storeview extends AppCompatActivity {
     final static int ACT_EDIT = 0;
-    String loginable = "0";
+    int loginable = 0;
     WebView web;
     WebSettings webss;
     Button itemplus;
     Button logins;
+    Button logouts;
+    Button sMaps;
     String sname;
 
     String iddd = "";
     String pwdss ="";
+    String cusorpro = "";
 
 
     Thread th;
@@ -67,8 +70,6 @@ public class Storeview extends AppCompatActivity {
         Intent i = getIntent();
         sname = i.getStringExtra("storename");
         String ssss;
-        //ssss =i.getStringExtra("logss");
-        //Toast.makeText(this, ssss, Toast.LENGTH_SHORT).show();
 
 
         web = (WebView)findViewById(R.id.storeitems);
@@ -84,44 +85,20 @@ public class Storeview extends AppCompatActivity {
                         //Toast.makeText(Storeview.this, "wwws", Toast.LENGTH_SHORT).show();
                         itemplus.setVisibility(View.GONE);
                         logins.setVisibility(View.GONE);
+                        sMaps.setVisibility(View.GONE);
+                        logouts.setVisibility(View.GONE);
                     break;
                 }
                 return false;
             }
         });
-        //webss.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
-        //web.loadUrl("http://13.125.255.233:8888/clients/storelist.php?store="+sname);
         web.loadUrl("http://13.125.255.233:8887/clients/storelist.php?store="+sname);
         web.reload();
 
         itemplus = (Button)findViewById(R.id.itemplus);
         logins = (Button)findViewById(R.id.logins);
-
-
-/*
-        han = new Handler(){
-            @Override
-            public void handleMessage(Message msg) {
-                super.handleMessage(msg);
-                web.goBack();
-                //Toast.makeText(getApplicationContext(),"ss",Toast.LENGTH_SHORT).show();
-            }
-        };
-        th = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                while (tt) {
-                    try {
-                        Thread.sleep(1000);
-                        tt = false;
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    Message m = han.obtainMessage();
-                    han.sendMessage(m);
-                }
-            }
-        });//*/
+        logouts = (Button)findViewById(R.id.logouts);
+        sMaps = (Button)findViewById(R.id.sMaps);
     }
 
     public class WebAppInterface {
@@ -146,7 +123,7 @@ public class Storeview extends AppCompatActivity {
 
         @JavascriptInterface
         public String Loginable(){
-            return loginable;
+            return (""+loginable);
         }
         @JavascriptInterface
         public String getIDs(){
@@ -187,16 +164,26 @@ public class Storeview extends AppCompatActivity {
                 if(web.canGoBack())
                     return;
                 //가게 주인만 봄
-                if(itemplus.getVisibility() == View.GONE)
+                if(itemplus.getVisibility() == View.GONE && cusorpro.equals("1"))
                     itemplus.setVisibility(View.VISIBLE);
                 else
                     itemplus.setVisibility(View.GONE);
 
                 //모두 볼수 있음
-                if(logins.getVisibility() == View.GONE)
+                if(logins.getVisibility() == View.GONE && loginable==0)
                     logins.setVisibility(View.VISIBLE);
                 else
                     logins.setVisibility(View.GONE);
+
+                if(logouts.getVisibility() == View.GONE && loginable==1)
+                    logouts.setVisibility(View.VISIBLE);
+                else
+                    logouts.setVisibility(View.GONE);
+
+                if(sMaps.getVisibility() == View.GONE)
+                    sMaps.setVisibility(View.VISIBLE);
+                else
+                    sMaps.setVisibility(View.GONE);
                 //Toast.makeText(this,"",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.itemplus://가게 주인만 등록 할수 있음
@@ -208,13 +195,22 @@ public class Storeview extends AppCompatActivity {
                 startActivityForResult(i,2);
                 break;
             case R.id.logins:
-                //web.destroyDrawingCache();
-                //web.loadUrl("about:blank");
-                //web.loadUrl("http://13.125.255.233:8888/clients/addStore.html");
-                //web.reload();
                 Intent i2 = new Intent(this,Loginstage.class);
                 i2.putExtra("storename",sname);
                 startActivityForResult(i2,ACT_EDIT);
+                break;
+            case R.id.sMaps:
+                Intent i3 = new Intent(this,StoreMapView.class);
+                i3.putExtra("storename",sname);
+                startActivity(i3);
+                break;
+            case R.id.logouts:
+                Toast.makeText(this, "logouts", Toast.LENGTH_SHORT).show();
+                loginable = 0;
+                logouts.setVisibility(View.GONE);
+                logins.setVisibility(View.VISIBLE);
+                itemplus.setVisibility(View.GONE);
+                cusorpro = "0";
                 break;
         }
     }
@@ -224,35 +220,21 @@ public class Storeview extends AppCompatActivity {
         if(requestCode == ACT_EDIT && resultCode == RESULT_OK){
             iddd = data.getStringExtra("idzz");
             pwdss = data.getStringExtra("pwdzz");
-            loginable = "1";
-            //Toast.makeText(Storeview.this,iddd+" : "+pwdss, Toast.LENGTH_SHORT).show();
-            //finish();
-            /*String str = null;
-            try {
-                str = "ids=" + URLEncoder.encode(iddd, "UTF-8")+"&pwds=" + URLEncoder.encode(pwdss, "UTF-8");
-            } catch (UnsupportedEncodingException e) {
-                e.printStackTrace();
-            }
-            //web.postUrl("http://13.125.255.233:8888/clients/storelist.php?store="+sname, str.getBytes());
-            web.postUrl("http://13.125.255.233:8887/clients/storelist.php?store="+sname, str.getBytes());
-*/
+            cusorpro = data.getStringExtra("cusorpro");
+            if(itemplus.getVisibility() == View.GONE && cusorpro.equals("1"))
+                itemplus.setVisibility(View.VISIBLE);
+            else
+                itemplus.setVisibility(View.GONE);
+            loginable = 1;
             itemplus.setVisibility(View.GONE);
             logins.setVisibility(View.GONE);
+            sMaps.setVisibility(View.GONE);
 
             CheckTypesTask task = new CheckTypesTask();
 
             task.execute();
-
-            //th.start();
-            //web.reload();
-            //Intent i2 = new Intent(this,Storeview.class);
-            //i2.putExtra("storename",sname);
-            //i2.putExtra("logss","1");
-            //i2.putExtra("idsss",iddd);
-            //startActivity(i2);
         }else if(requestCode == 2 && resultCode == RESULT_OK){
             web.reload();
-            //Toast.makeText(this, "aaa", Toast.LENGTH_SHORT).show();
         }
     }
 
