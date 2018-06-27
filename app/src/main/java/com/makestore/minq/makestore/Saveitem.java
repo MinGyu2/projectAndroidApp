@@ -36,6 +36,7 @@ public class Saveitem extends AppCompatActivity {
     String storename,idss,pswss;
     EditText nameet;
     EditText textet;
+    EditText prices;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +53,7 @@ public class Saveitem extends AppCompatActivity {
         imgs = (ImageView)findViewById(R.id.imgviews);
         nameet = (EditText)findViewById(R.id.nameet);
         textet = (EditText)findViewById(R.id.textet);
+        prices = (EditText)findViewById(R.id.prices);
 
     }
     @Override
@@ -74,10 +76,10 @@ public class Saveitem extends AppCompatActivity {
                 break;
             case R.id.savebt:
                 InsertData in = new InsertData();
-                if(!nameet.getText().toString().equals("") && !textet.getText().toString().equals("") && !imgen.equals("")) {
-                    in.execute(imgen, nameet.getText().toString(), textet.getText().toString());
+                if(!nameet.getText().toString().equals("") && !prices.getText().toString().equals("") && !textet.getText().toString().equals("") && !imgen.equals("")) {
+                    in.execute(imgen, nameet.getText().toString(),prices.getText().toString(), textet.getText().toString());
                 }else{
-                    Toast.makeText(this,"사진 선택 또는 name 또는 text 입력 하시오.",Toast.LENGTH_LONG).show();
+                    Toast.makeText(this,"사진 선택 또는 name 또는 가격 또는 text 입력 하시오.",Toast.LENGTH_LONG).show();
                 }
                 break;
             case R.id.delbt:
@@ -139,7 +141,8 @@ public class Saveitem extends AppCompatActivity {
         protected String doInBackground(String... strings) {
             String img = (String)strings[0];
             String name = (String)strings[1];
-            String text = (String)strings[2];
+            String pricess =(String)strings[2];
+            String text = (String)strings[3];
 
 
             //String serverURL = "http://13.125.255.233:8888/clients/test2.php";
@@ -153,6 +156,7 @@ public class Saveitem extends AppCompatActivity {
             buffer.append("name").append("=").append(storename).append("&");
             //buffer.append("name").append("=").append("root").append("&");
             buffer.append("imgname").append("=").append(name).append("&");
+            buffer.append("prices").append("=").append(pricess).append("&");
             buffer.append("text").append("=").append(text);
 
             try{
