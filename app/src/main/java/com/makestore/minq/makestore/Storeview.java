@@ -44,6 +44,7 @@ public class Storeview extends AppCompatActivity {
     Button logins;
     Button logouts;
     Button sMaps;
+    Button orderlist;
     String sname;
 
     String iddd = "";
@@ -88,6 +89,7 @@ public class Storeview extends AppCompatActivity {
                         logins.setVisibility(View.GONE);
                         sMaps.setVisibility(View.GONE);
                         logouts.setVisibility(View.GONE);
+                        orderlist.setVisibility(View.GONE);
                     break;
                 }
                 return false;
@@ -100,6 +102,7 @@ public class Storeview extends AppCompatActivity {
         logins = (Button)findViewById(R.id.logins);
         logouts = (Button)findViewById(R.id.logouts);
         sMaps = (Button)findViewById(R.id.sMaps);
+        orderlist = (Button)findViewById(R.id.orderlist);
     }
 
     public class WebAppInterface {
@@ -179,6 +182,11 @@ public class Storeview extends AppCompatActivity {
                 else
                     logins.setVisibility(View.GONE);
 
+                if(orderlist.getVisibility() == View.GONE && loginable ==1 && cusorpro.equals("0"))
+                    orderlist.setVisibility(View.VISIBLE);
+                else
+                    orderlist.setVisibility(View.GONE);
+
                 if(logouts.getVisibility() == View.GONE && loginable==1)
                     logouts.setVisibility(View.VISIBLE);
                 else
@@ -214,7 +222,15 @@ public class Storeview extends AppCompatActivity {
                 logouts.setVisibility(View.GONE);
                 logins.setVisibility(View.VISIBLE);
                 itemplus.setVisibility(View.GONE);
+                orderlist.setVisibility(View.GONE);
                 cusorpro = "0";
+                break;
+            case R.id.orderlist:
+                Intent i4 = new Intent(this,OrderList.class);
+                i4.putExtra("sname",sname);
+                i4.putExtra("id",iddd);
+                startActivity(i4);
+                Toast.makeText(getApplicationContext(),"sss",Toast.LENGTH_SHORT).show();
                 break;
         }
     }
@@ -233,6 +249,7 @@ public class Storeview extends AppCompatActivity {
             itemplus.setVisibility(View.GONE);
             logins.setVisibility(View.GONE);
             sMaps.setVisibility(View.GONE);
+            orderlist.setVisibility(View.GONE);
 
             CheckTypesTask task = new CheckTypesTask();
 

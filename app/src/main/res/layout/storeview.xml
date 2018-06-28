@@ -7,7 +7,17 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
     </WebView>
-
+    <!-- 고객 만 이용 가능 -->
+    <Button
+        android:id="@+id/orderlist"
+        android:visibility="gone"
+        android:onClick="mk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/logouts"
+        android:layout_alignLeft="@+id/logouts"
+        android:text="주문목록"
+        />
     <!--모두 이용 가능-->
     <Button
         android:id="@+id/logins"
