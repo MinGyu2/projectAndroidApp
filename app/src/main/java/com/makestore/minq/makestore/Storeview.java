@@ -45,6 +45,8 @@ public class Storeview extends AppCompatActivity {
     Button logouts;
     Button sMaps;
     Button orderlist;
+    Button customlist;
+    Button sales;
     String sname;
 
     String iddd = "";
@@ -90,6 +92,8 @@ public class Storeview extends AppCompatActivity {
                         sMaps.setVisibility(View.GONE);
                         logouts.setVisibility(View.GONE);
                         orderlist.setVisibility(View.GONE);
+                        customlist.setVisibility(View.GONE);
+                        sales.setVisibility(View.GONE);
                     break;
                 }
                 return false;
@@ -103,6 +107,8 @@ public class Storeview extends AppCompatActivity {
         logouts = (Button)findViewById(R.id.logouts);
         sMaps = (Button)findViewById(R.id.sMaps);
         orderlist = (Button)findViewById(R.id.orderlist);
+        customlist = (Button)findViewById(R.id.customlist);
+        sales = (Button)findViewById(R.id.sales);
     }
 
     public class WebAppInterface {
@@ -176,6 +182,16 @@ public class Storeview extends AppCompatActivity {
                 else
                     itemplus.setVisibility(View.GONE);
 
+                if(customlist.getVisibility() == View.GONE && cusorpro.equals("1"))
+                    customlist.setVisibility(View.VISIBLE);
+                else
+                    customlist.setVisibility(View.GONE);
+
+                if(sales.getVisibility() == View.GONE && cusorpro.equals("1"))
+                    sales.setVisibility(View.VISIBLE);
+                else
+                    sales.setVisibility(View.GONE);
+
                 //모두 볼수 있음
                 if(logins.getVisibility() == View.GONE && loginable==0)
                     logins.setVisibility(View.VISIBLE);
@@ -223,14 +239,35 @@ public class Storeview extends AppCompatActivity {
                 logins.setVisibility(View.VISIBLE);
                 itemplus.setVisibility(View.GONE);
                 orderlist.setVisibility(View.GONE);
+                customlist.setVisibility(View.GONE);
+                sales.setVisibility(View.GONE);
                 cusorpro = "0";
                 break;
             case R.id.orderlist:
                 Intent i4 = new Intent(this,OrderList.class);
                 i4.putExtra("sname",sname);
                 i4.putExtra("id",iddd);
+
                 startActivity(i4);
-                Toast.makeText(getApplicationContext(),"sss",Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(),"sss",Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.customlist:
+                Intent i5 = new Intent(this,CustomList.class);
+                i5.putExtra("sname",sname);
+                i5.putExtra("id",iddd);
+                i5.putExtra("pwd",pwdss);
+
+                startActivity(i5);
+                //Toast.makeText(getApplicationContext(),"",Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.sales:
+                Intent i6 = new Intent(this,Sales.class);
+                i6.putExtra("sname",sname);
+                i6.putExtra("id",iddd);
+                i6.putExtra("pwd",pwdss);
+
+                startActivity(i6);
+                Toast.makeText(this, "sss", Toast.LENGTH_SHORT).show();
                 break;
         }
     }
@@ -250,6 +287,8 @@ public class Storeview extends AppCompatActivity {
             logins.setVisibility(View.GONE);
             sMaps.setVisibility(View.GONE);
             orderlist.setVisibility(View.GONE);
+            customlist.setVisibility(View.GONE);
+            sales.setVisibility(View.GONE);
 
             CheckTypesTask task = new CheckTypesTask();
 

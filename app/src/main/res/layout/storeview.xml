@@ -50,6 +50,27 @@
 
     <!--가게 주인만 이용 가능
         android:visibility="gone"-->
+
+    <Button
+        android:id="@+id/sales"
+        android:visibility="gone"
+        android:onClick="mk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/customlist"
+        android:layout_alignLeft="@+id/customlist"
+        android:text="매출"
+        />
+    <Button
+        android:id="@+id/customlist"
+        android:visibility="gone"
+        android:onClick="mk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/logouts"
+        android:layout_alignLeft="@+id/logouts"
+        android:text="고객목록"
+        />
     <Button
         android:id="@+id/itemplus"
         android:visibility="gone"

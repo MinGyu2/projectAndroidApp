@@ -24,6 +24,9 @@
         <activity android:name=".MapsView" android:screenOrientation="portrait"/>
         <activity android:name=".StoreMapView" android:screenOrientation="portrait"/>
         <activity android:name=".OrderList" android:screenOrientation="portrait"/>
+        <activity android:name=".CustomList" android:screenOrientation="portrait"/>
+        <activity android:name=".CustomOrder" android:screenOrientation="portrait"/>
+        <activity android:name=".Sales" android:screenOrientation="portrait"/>
     </application>
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
