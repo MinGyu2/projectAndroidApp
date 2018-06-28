@@ -63,7 +63,8 @@ public class Storeview extends AppCompatActivity {
         //start action bar left button
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setHomeAsUpIndicator(R.drawable.viewmenu);
+        //actionBar.setHomeAsUpIndicator(R.drawable.viewmenu);
+        actionBar.setHomeAsUpIndicator(R.drawable.refreshball);
         actionBar.setHomeButtonEnabled(true);
         //end
 
@@ -133,7 +134,9 @@ public class Storeview extends AppCompatActivity {
         public String getPWDs(){
             return pwdss;
         }
-/*
+        @JavascriptInterface
+        public String getConfirm(){ return cusorpro; }//가게 주인인지 확인
+/*web.reload();
         @JavascriptInterface
         public String testsss(String t){
             //Toast.makeText(mContext, t, Toast.LENGTH_SHORT).show();
@@ -153,7 +156,8 @@ public class Storeview extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int itemid = item.getItemId();
         if(itemid == android.R.id.home){//action bar left button == home button
-            Toast.makeText(this,"hihi",Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this,"hihi",Toast.LENGTH_SHORT).show();
+            web.reload();
         }
         return super.onOptionsItemSelected(item);
     }
